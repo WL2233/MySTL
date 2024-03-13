@@ -50,7 +50,3 @@ int main()
 	printf("\n");
 	return 0;
 }
-
-
-
-//区间构造会报错
