@@ -410,215 +410,120 @@ public:
 public:
 	bool operator==(mydeque const& other)
 	{
-		bool thisinleft = (this->_leftsize > 0) ? true : false;
-		bool otherinleft = (other._leftsize > 0) ? true : false;
-		size_t thisrearindex;
-		size_t otherrearindex;
-
-		if (thisinleft)
-		{
-			thisrearindex = this->_leftsize - 1;
-		}
-		else
-		{
-			thisrearindex = 0;
-		}
-
-		if (otherinleft)
-		{
-			otherrearindex = other._leftsize - 1;
-		}
-		else
-		{
-			otherrearindex = 0;
-		}
-
-		size_t thissizeindex = 0;
-		size_t othersizeindex = 0;
 		size_t thissize = this->_leftsize + this->_rightsize;
 		size_t othersize = other._leftsize + other._rightsize;
-
-		while(thissizeindex<thissize&&othersizeindex < othersize)
-		{
-			if (thisinleft)
-			{
-				if (otherinleft)
-				{
-					if (this->_pleftdata[thisrearindex] != other._pleftdata[otherrearindex])
-					{
-						return false;
-					}
-					if (otherrearindex > 0)
-					{
-						--otherrearindex;
-					}
-					else
-					{
-						otherrearindex = 0;
-						otherinleft = false;
-					}
-				}
-				else
-				{
-					if (this->_pleftdata[thisrearindex] != other._prightdata[otherrearindex])
-					{
-						return false;
-					}
-					++otherrearindex;
-				}
-				if (thisrearindex > 0)
-				{
-					--thisrearindex;
-				}
-				else
-				{
-					thisrearindex = 0;
-					thisinleft = false;
-				}
-			}
-			else
-			{
-				if (otherinleft)
-				{
-					if (this->_prightdata[thisrearindex] != other._pleftdata[otherrearindex])
-					{
-						return false;
-					}
-					if (otherrearindex > 0)
-					{
-						--otherrearindex;
-					}
-					else
-					{
-						otherrearindex = 0;
-						otherinleft = false;
-					}
-				}
-				else
-				{
-					if (this->_prightdata[thisrearindex] != other._prightdata[otherrearindex])
-					{
-						return false;
-					}
-					++otherrearindex;
-				}
-				++thisrearindex;
-			}
-
-			++thissizeindex;
-			++othersizeindex;
-		}
-		
 		if (thissize != othersize)
 		{
 			return false;
 		}
 		else
 		{
+			bool thisinleft = (this->_leftsize > 0) ? true : false;
+			bool otherinleft = (other._leftsize > 0) ? true : false;
+			size_t thisrearindex;
+			size_t otherrearindex;
+
+			if (thisinleft)
+			{
+				thisrearindex = this->_leftsize - 1;
+			}
+			else
+			{
+				thisrearindex = 0;
+			}
+
+			if (otherinleft)
+			{
+				otherrearindex = other._leftsize - 1;
+			}
+			else
+			{
+				otherrearindex = 0;
+			}
+
+			size_t thissizeindex = 0;
+			size_t othersizeindex = 0;
+
+
+			while (thissizeindex < thissize && othersizeindex < othersize)
+			{
+				if (thisinleft)
+				{
+					if (otherinleft)
+					{
+						if (this->_pleftdata[thisrearindex] != other._pleftdata[otherrearindex])
+						{
+							return false;
+						}
+						if (otherrearindex > 0)
+						{
+							--otherrearindex;
+						}
+						else
+						{
+							otherrearindex = 0;
+							otherinleft = false;
+						}
+					}
+					else
+					{
+						if (this->_pleftdata[thisrearindex] != other._prightdata[otherrearindex])
+						{
+							return false;
+						}
+						++otherrearindex;
+					}
+					if (thisrearindex > 0)
+					{
+						--thisrearindex;
+					}
+					else
+					{
+						thisrearindex = 0;
+						thisinleft = false;
+					}
+				}
+				else
+				{
+					if (otherinleft)
+					{
+						if (this->_prightdata[thisrearindex] != other._pleftdata[otherrearindex])
+						{
+							return false;
+						}
+						if (otherrearindex > 0)
+						{
+							--otherrearindex;
+						}
+						else
+						{
+							otherrearindex = 0;
+							otherinleft = false;
+						}
+					}
+					else
+					{
+						if (this->_prightdata[thisrearindex] != other._prightdata[otherrearindex])
+						{
+							return false;
+						}
+						++otherrearindex;
+					}
+					++thisrearindex;
+				}
+
+				++thissizeindex;
+				++othersizeindex;
+			}
+
 			return true;
-		}
+		}		
 	}
 
 	bool operator!=(mydeque const& other)
 	{
-		bool thisinleft = (this->_leftsize > 0) ? true : false;
-		bool otherinleft = (other._leftsize > 0) ? true : false;
-		size_t thisrearindex;
-		size_t otherrearindex;
-
-		if (thisinleft)
-		{
-			thisrearindex = this->_leftsize - 1;
-		}
-		else
-		{
-			thisrearindex = 0;
-		}
-
-		if (otherinleft)
-		{
-			otherrearindex = other._leftsize - 1;
-		}
-		else
-		{
-			otherrearindex = 0;
-		}
-
-		size_t thissizeindex = 0;
-		size_t othersizeindex = 0;
 		size_t thissize = this->_leftsize + this->_rightsize;
 		size_t othersize = other._leftsize + other._rightsize;
-
-		while (thissizeindex < thissize && othersizeindex < othersize)
-		{
-			if (thisinleft)
-			{
-				if (otherinleft)
-				{
-					if (this->_pleftdata[thisrearindex] != other._pleftdata[otherrearindex])
-					{
-						return true;
-					}
-					if (otherrearindex > 0)
-					{
-						--otherrearindex;
-					}
-					else
-					{
-						otherrearindex = 0;
-						otherinleft = false;
-					}
-				}
-				else
-				{
-					if (this->_pleftdata[thisrearindex] != other._prightdata[otherrearindex])
-					{
-						return true;
-					}
-					++otherrearindex;
-				}
-				if (thisrearindex > 0)
-				{
-					--thisrearindex;
-				}
-				else
-				{
-					thisrearindex = 0;
-					thisinleft = false;
-				}
-			}
-			else
-			{
-				if (otherinleft)
-				{
-					if (this->_prightdata[thisrearindex] != other._pleftdata[otherrearindex])
-					{
-						return true;
-					}
-					if (otherrearindex > 0)
-					{
-						--otherrearindex;
-					}
-					else
-					{
-						otherrearindex = 0;
-						otherinleft = false;
-					}
-				}
-				else
-				{
-					if (this->_prightdata[thisrearindex] != other._prightdata[otherrearindex])
-					{
-						return true;
-					}
-					++otherrearindex;
-				}
-				++thisrearindex;
-			}
-
-			++thissizeindex;
-			++othersizeindex;
-		}
 
 		if (thissize != othersize)
 		{
@@ -626,6 +531,102 @@ public:
 		}
 		else
 		{
+			bool thisinleft = (this->_leftsize > 0) ? true : false;
+			bool otherinleft = (other._leftsize > 0) ? true : false;
+			size_t thisrearindex;
+			size_t otherrearindex;
+
+			if (thisinleft)
+			{
+				thisrearindex = this->_leftsize - 1;
+			}
+			else
+			{
+				thisrearindex = 0;
+			}
+
+			if (otherinleft)
+			{
+				otherrearindex = other._leftsize - 1;
+			}
+			else
+			{
+				otherrearindex = 0;
+			}
+
+			size_t thissizeindex = 0;
+			size_t othersizeindex = 0;
+
+
+			while (thissizeindex < thissize && othersizeindex < othersize)
+			{
+				if (thisinleft)
+				{
+					if (otherinleft)
+					{
+						if (this->_pleftdata[thisrearindex] != other._pleftdata[otherrearindex])
+						{
+							return true;
+						}
+						if (otherrearindex > 0)
+						{
+							--otherrearindex;
+						}
+						else
+						{
+							otherrearindex = 0;
+							otherinleft = false;
+						}
+					}
+					else
+					{
+						if (this->_pleftdata[thisrearindex] != other._prightdata[otherrearindex])
+						{
+							return true;
+						}
+						++otherrearindex;
+					}
+					if (thisrearindex > 0)
+					{
+						--thisrearindex;
+					}
+					else
+					{
+						thisrearindex = 0;
+						thisinleft = false;
+					}
+				}
+				else
+				{
+					if (otherinleft)
+					{
+						if (this->_prightdata[thisrearindex] != other._pleftdata[otherrearindex])
+						{
+							return true;
+						}
+						if (otherrearindex > 0)
+						{
+							--otherrearindex;
+						}
+						else
+						{
+							otherrearindex = 0;
+							otherinleft = false;
+						}
+					}
+					else
+					{
+						if (this->_prightdata[thisrearindex] != other._prightdata[otherrearindex])
+						{
+							return true;
+						}
+						++otherrearindex;
+					}
+					++thisrearindex;
+				}
+				++thissizeindex;
+				++othersizeindex;
+			}
 			return false;
 		}
 	}
