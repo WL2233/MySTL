@@ -401,10 +401,10 @@ public:
 		SAFE_DELARR(_prightdata);
 		SAFE_DELARR(_pleftdata);
 		//可不写
-		_leftcapacity = 0;
+		/*_leftcapacity = 0;
 		_leftsize = 0;
 		_rightcapacity = 0;
-		_rightsize = 0;
+		_rightsize = 0;*/
 	}
 
 public:
@@ -1191,6 +1191,28 @@ public:
 		{
 			return false;
 		}
+	}
+
+public:
+	//assign() 是用于将一个范围内的元素赋值给容器的成员函数。
+	//需要注意的是，调用 assign() 函数会清空容器原有的元素，并用新的元素替换它们。
+	void assign(size_t count, const T& val)
+	{
+		SAFE_DELARR(_prightdata);
+		SAFE_DELARR(_pleftdata);
+		
+		/*_leftcapacity = 0;
+		_leftsize = 0;
+		_rightcapacity = 0;
+		_rightsize = 0;*/
+
+
+	}
+	template<class InputIterator,
+		class = typename enable_if<_Is_iterator<InputIterator>::value, void>::type>
+	void assign(InputIterator first, InputIterator last) 
+	{
+
 	}
 	
 
