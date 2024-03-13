@@ -410,6 +410,7 @@ public:
 			{
 				this->_pdata[i] = other._pdata[i];
 			}
+			//
 		}
 		else
 		{
@@ -485,7 +486,7 @@ public:
 		}
 	}
 
-
+	//
 public:
 
 	void assign(size_t count, const T& val)
