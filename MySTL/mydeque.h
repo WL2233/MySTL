@@ -1206,17 +1206,100 @@ public:
 		_rightcapacity = 0;
 		_rightsize = 0;*/
 
+		if (count > 0)
+		{
 
+			_leftcapacity = count / 2;
+			_leftsize = _leftcapacity;
+			_rightcapacity = count - _leftcapacity;
+			_rightsize = _rightcapacity;
+			if (_leftcapacity > 0)
+			{
+				_pleftdata = new T[_leftcapacity];
+			}
+			else
+			{
+				_pleftdata = nullptr;
+			}
+			_prightdata = new T[_rightcapacity];
+
+			for (int i = (int)_leftsize - 1; i >= 0; --i)
+			{
+				_pleftdata[i] = val;
+			}
+
+			for (size_t i = 0; i < _rightsize; ++i)
+			{
+				_prightdata[i] = val;
+			}
+
+		}
+		else
+		{
+			_pleftdata = nullptr;
+			_leftcapacity = 0;
+			_leftsize = 0;
+
+			_prightdata = nullptr;
+			_rightcapacity = 0;
+			_rightsize = 0;
+		}
 	}
 	template<class InputIterator,
 		class = typename enable_if<_Is_iterator<InputIterator>::value, void>::type>
 	void assign(InputIterator first, InputIterator last) 
 	{
+		SAFE_DELARR(_prightdata);
+		SAFE_DELARR(_pleftdata);
 
+		/*_leftcapacity = 0;
+		_leftsize = 0;
+		_rightcapacity = 0;
+		_rightsize = 0;*/
+
+		size_t count = last - first;
+
+		if (count > 0)
+		{
+			InputIterator pt = first;
+			_leftcapacity = count / 2;
+			_leftsize = _leftcapacity;
+			_rightcapacity = count - _leftcapacity;
+			_rightsize = _rightcapacity;
+			if (_leftcapacity > 0)
+			{
+				_pleftdata = new T[_leftcapacity];
+			}
+			else
+			{
+				_pleftdata = nullptr;
+			}
+			_prightdata = new T[_rightcapacity];
+
+			for (int i = _leftsize - 1; i >= 0; --i)
+			{
+				_pleftdata[i] = *(pt++);
+			}
+
+			for (size_t i = 0; i < _rightsize; ++i)
+			{
+				_prightdata[i] = *(pt++);
+			}
+
+		}
+		else
+		{
+			_pleftdata = nullptr;
+			_leftcapacity = 0;
+			_leftsize = 0;
+
+			_prightdata = nullptr;
+			_rightcapacity = 0;
+			_rightsize = 0;
+		}
 	}
 	
-
-
+	
 
 	//T& operator[](size_t pos)
 	//{
