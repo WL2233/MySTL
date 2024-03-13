@@ -1299,7 +1299,16 @@ public:
 		}
 	}
 	
-	
+	T& at(size_t pos)
+	{
+		if (pos >= _leftsize + _rightsize)
+		{
+			throw "incalid indes";
+		}
+	}
+
+	T const& at(size_t pos) const
+
 
 	//T& operator[](size_t pos)
 	//{
