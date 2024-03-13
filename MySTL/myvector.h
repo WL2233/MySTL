@@ -542,7 +542,7 @@ public:
 
 	T& at(size_t pos)//注意这里是引用
 	{
-		if (pos > _size)
+		if (pos >= _size)
 		{
 			throw "incalid indes";
 		}
